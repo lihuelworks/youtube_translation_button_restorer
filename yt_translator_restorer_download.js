@@ -10,8 +10,8 @@
 // @run-at       document-end
 // @supportURL   https://github.com/lihuelworks/youtube_translation_button_restorer/issues
 // @contributionURL https://github.com/lihuelworks/youtube_translation_button_restorer#donate
-// @updateURL    https://raw.githubusercontent.com/lihuelworks/youtube_translation_button_restorer/main/yt_translator_restorer.js
-// @downloadURL  https://raw.githubusercontent.com/lihuelworks/youtube_translation_button_restorer/main/yt_translator_restorer.js
+// @updateURL    https://raw.githubusercontent.com/lihuelworks/youtube_translation_button_restorer/main/yt_translator_restorer_download.js
+// @downloadURL  https://raw.githubusercontent.com/lihuelworks/youtube_translation_button_restorer/main/yt_translator_restorer_download.js
 // ==/UserScript==
 
 
@@ -86,7 +86,7 @@ GM_addStyle(`
            url: url,
            onload: function(response) {
                const srtData = xmlToSrt(response.responseText);
-               openInNewTab(srtData);
+               downloadSrtFile(srtData);
                hideSpinner();
            }
        });
@@ -97,9 +97,9 @@ GM_addStyle(`
        const xmlDoc = parser.parseFromString(xml, "text/xml");
        let srt = "";
        let counter = 1;
-       xmlDoc.querySelectorAll("text").forEach((node) => {
-           let start = parseFloat(node.getAttribute("start"));
-           let duration = parseFloat(node.getAttribute("dur"));
+       xmlDoc.querySelectorAll("body > p").forEach((node) => {
+           let start = parseFloat(node.getAttribute("d"));
+           let duration = parseFloat(node.getAttribute("d"));
            let end = start + duration;
            let startTime = formatTime(start);
            let endTime = formatTime(end);
@@ -126,15 +126,17 @@ GM_addStyle(`
        return date.toISOString().substr(11, 12).replace(".", ",");
    }
 
-   function openInNewTab(srtContent) {
+   // Function to download the SRT file
+   function downloadSrtFile(srtContent) {
        const blob = new Blob([srtContent], { type: "text/plain; charset=utf-8" });
        const url = URL.createObjectURL(blob);
-       const newTab = window.open(url, "_blank");
-       if (!newTab) {
-           alert("Please allow popups for this action to work.");
-       }
+       const a = document.createElement("a");
+       a.href = url;
+       a.download = "captions.srt";
+       document.body.appendChild(a);
+       a.click();
+       document.body.removeChild(a);
    }
-
 
    function showSpinner() {
        const button = document.getElementById("lihuelworks-subtitle-getter");
