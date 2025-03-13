@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube Subtitle Downloader (Manual Trigger) with TrustedHTML Bypass and Spinner in Polymer Element
 // @namespace    http://tampermonkey.net/
-// @version      1.3
+// @version      1.4
 // @description  Fetch subtitles as SRT with manual trigger, bypass TrustedHTML policy, and insert a button (with spinner) into a Polymer dropdown element
 // @match        *://www.youtube.com/watch?v*
 // @grant        GM_xmlhttpRequest
