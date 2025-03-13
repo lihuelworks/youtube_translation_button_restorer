@@ -18,7 +18,7 @@
 // Apply container-specific CSS styles outside of the function using GM_addStyle
 GM_addStyle(`
     .ytd-popup-container.style-scope {
-       height: 250px;
+       height: auto;
        max-height: none;
        overflow: hidden;
    }
