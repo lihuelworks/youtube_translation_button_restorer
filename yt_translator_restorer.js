@@ -6,6 +6,7 @@
 // @match        *://www.youtube.com/watch?v*
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addStyle
+// @license MIT 
 // @run-at       document-end
 // @supportURL   https://github.com/lihuelworks/youtube_translation_button_restorer/issues
 // @contributionURL https://github.com/lihuelworks/youtube_translation_button_restorer#donate
