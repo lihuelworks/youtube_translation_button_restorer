@@ -3,11 +3,16 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.3
 // @description  Fetch subtitles as SRT with manual trigger, bypass TrustedHTML policy, and insert a button (with spinner) into a Polymer dropdown element
-// @match        *://www.youtube.com/watch?v=*
+// @match        *://www.youtube.com/watch?v*
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addStyle
 // @run-at       document-end
+// @supportURL   https://github.com/lihuelworks/youtube_translation_button_restorer/issues
+// @contributionURL https://github.com/lihuelworks/youtube_translation_button_restorer#donate
+// @updateURL    https://raw.githubusercontent.com/lihuelworks/youtube_translation_button_restorer/main/yt_translator_restorer.js
+// @downloadURL  https://raw.githubusercontent.com/lihuelworks/youtube_translation_button_restorer/main/yt_translator_restorer.js
 // ==/UserScript==
+
 
 // Apply container-specific CSS styles outside of the function using GM_addStyle
 GM_addStyle(`
